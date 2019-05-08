@@ -1,5 +1,3 @@
-const user = require('../user/User');
-
 class Authenticator {
     constructor(userProvider, hasher, session) {
         this.userProvider = userProvider;

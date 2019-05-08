@@ -25,12 +25,6 @@ class LoginController {
         }
         
     }
-
-    async logout(ctx) {
-        ctx.authenticator.logout();
-
-        ctx.redirect('/login');
-    }
 }
 
 module.exports = LoginController;
