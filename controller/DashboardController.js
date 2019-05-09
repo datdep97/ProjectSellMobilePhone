@@ -1,6 +1,6 @@
 class DashboardController {
     async getDashboard(ctx, next) {
-       ctx.render('index.html');
+        ctx.render('index.html');
     }
 
     async logout(ctx) {

@@ -1,6 +1,3 @@
-const KnexFile = require('../knexfile');
-const knex = require('knex')(KnexFile.development);
-
 class LoginController {
 
     async getLogin(ctx) {
@@ -15,7 +12,7 @@ class LoginController {
         const {username, password} = ctx.request.body;
         
         try {
-            let user = await ctx.authenticator.attempt(username, password);    
+            let user = await ctx.authenticator.attempt(username, password);
 
             ctx.authenticator.login(user);
             ctx.redirect('/dashboard');

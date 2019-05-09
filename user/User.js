@@ -9,6 +9,10 @@ class User {
         return this.password;
     }
 
+    getUsername() {
+        return this.username;
+    }
+
     getId() {
         return this.id;
     }

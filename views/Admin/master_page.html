@@ -57,19 +57,19 @@
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="chart.html">
+                            <a href="admin">
                                 <i class="fas fa-chart-bar"></i>Admin</a>
                         </li>
                         <li>
                             <a href="table.html">
-                                <i class="fas fa-table"></i>Type Product</a>
+                                <i class="fas fa-table"></i>Categorys</a>
                         </li>
                         <li>
-                            <a href="form.html">
+                            <a href="product">
                                 <i class="far fa-check-square"></i>Products</a>
                         </li>
                         <li>
@@ -151,20 +151,20 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="admin">
+                                <i class="fas fa-chart-bar"></i>Admin</a>
                         </li>
                         <li>
                             <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                                <i class="fas fa-table"></i>Categorys</a>
                         </li>
                         <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                            <a href="product">
+                                <i class="far fa-check-square"></i>Products</a>
                         </li>
                         <li>
                             <a href="#">
@@ -377,7 +377,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#">{{ctx.user.getUsername()}}</a>
                                                     </h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>
