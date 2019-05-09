@@ -5,24 +5,28 @@ class UserRepository {
         this.knex = knex;
     }
 
+    async getAll() {
+        let rawUsers = await this.knex.select('*').from('Admin');
+        return rawUsers.map(rawUser => this.factoryUser(rawUser));
+    }
+
     async findByUsername(username) {
-        let rawUser = await this.knex.select('*').from('admin').where('username', username);
+        let [rawUser] = await this.knex.select('*').from('Admin').where('username', username);
+        return !!rawUser ? this.factoryUser(rawUser) : null;
+    }
+
+    async getById(id) {
+        let rawUser = await this.knex.select('*').from('Admin').where('id', id);
 
         if(rawUser.length) {
-            return new User(rawUser[0].id, rawUser[0].username, rawUser[0].passworld);
+            return this.factoryUser(rawUser[0]);
         } 
 
         return null;
     }
 
-    async getById(id) {
-        let rawUser = await this.knex.select('*').from('admin').where('id', id);
-
-        if(rawUser.length) {
-            return new User(rawUser[0].id, rawUser[0].username, rawUser[0].passworld);
-        } 
-
-        return null;
+    factoryUser(rawUserData) {
+        return new User(rawUserData.id, rawUserData.username, rawUserData.password);
     }
 }
 

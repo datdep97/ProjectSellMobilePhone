@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
         table.increments('id');
         table.string('name', 50).notNullable();
         table.text('description').notNullable();
-        table.tinyInteger('status').notNullable();
+        table.integer('status').notNullable();
     });
 };
 

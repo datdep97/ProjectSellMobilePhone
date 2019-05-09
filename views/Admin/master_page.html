@@ -151,12 +151,12 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="dashboard">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="admin">
+                                <i class="fas fa-chart-bar"></i>Admin</a>
                         </li>
                         <li>
                             <a href="table.html">
@@ -377,7 +377,7 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">john doe</a>
+                                                        <a href="#">{{ctx.user.getUsername()}}</a>
                                                     </h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>

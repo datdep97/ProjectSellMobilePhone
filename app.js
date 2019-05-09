@@ -13,6 +13,7 @@ const authProvider    = require('./auth/Auth.Provider');
 const userProvider    = require('./user/UserProvider');
 const hasherProvider  = require('./hasher/hasherProvider');
 const routerDashboard = require('./router/RouteDashboard');
+const routerAdmin     = require('./router/RouterAdmin');
 const staticPath      = '/views/Admin';
 
 const app = new Koa();
@@ -30,6 +31,7 @@ app.use(userProvider(knex));
 app.use(authProvider());
 app.use(routerLogin.routes());
 app.use(routerDashboard.routes());
+app.use(routerAdmin.routes());
 
 app.listen(process.env.POST, () => {
     console.log('Server listen port 6060')
