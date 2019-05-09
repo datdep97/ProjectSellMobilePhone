@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  node_server:
+    build: .
+    ports: 
+      - "4000:6060"
+    depends_on:
+      - mariadb
+  mariadb:
+    image: mariadb:10.3
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+ 
