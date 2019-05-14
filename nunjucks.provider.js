@@ -1,7 +1,7 @@
 const nunjucks = require('nunjucks');
 
 module.exports = () => {
-    nunjucks.configure('./views/Admin', {autoescape: true});
+    nunjucks.configure('./views/Client', {autoescape: true});
 
     return async (ctx, next) => {
         ctx.nunjucks = nunjucks;

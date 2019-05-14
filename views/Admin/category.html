@@ -1,0 +1,115 @@
+class CategoryController {
+
+    // Show and Add Category
+    async getCategory(ctx, next) {
+        let categorys = await ctx.categoryRepository.getAll();
+        ctx.render('category.html', { categorys });
+    }
+
+    async postCategory(ctx, next) {
+        let data = {
+            name       : ctx.request.body.name,
+            description: ctx.request.body.description,
+            status     : 1
+        }
+        console.log(data);
+        await ctx.categoryRepository.add(data);
+        ctx.redirect('/categories');
+    }
+
+    // Update Category
+    async getUpdate(ctx, next) {
+        let detailCategory = await ctx.categoryRepository.findCategoryById(ctx.params.id);
+        ctx.render('UpdateCategory.html', { detailCategory });
+    }
+
+    async postUpdate(ctx, next) {
+        let data = {
+            name       : ctx.request.body.name,
+            description: ctx.request.body.description,
+            status     : ctx.request.body.status,
+        }
+        let id = ctx.params.id;
+        await ctx.categoryRepository.update(data, id);
+        ctx.redirect('/categories');
+    }
+
+    // Delete Category
+    async delete(ctx, next) {
+        await ctx.categoryRepository.delete(ctx.params.id);
+        ctx.redirect('/categories');
+    }
+}
+
+module.exports = CategoryController;
+Collapse
+
+
+
+new messages
+9:43 AM
+category.html 
+{% extends "master_page.html" %}
+{% block title %}
+    Categorys
+{% endblock %}
+{% block main %}
+   <!-- MAIN CONTENT-->
+<div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <!-- USER DATA-->
+                                <div class="card">
+                                    <div class="card-header">
+                                        <strong>Thêm</strong> danh mục
+                                    </div>
+                                    <div class="card-body card-block">
+                                        <form method="post">
+                                            <div class="form-group">
+                                                <label for="nf-email" class=" form-control-label">Tên danh mục</label>
+                                                <input type="text" name="name" placeholder="Nhập tên danh mục" class="form-control" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="nf-password" class=" form-control-label">Mô tả</label>
+                                                <textarea class="form-control" name="description" required></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-success btn-sm">
+                                                <i class="fa fa-dot-circle-o"></i> THÊM
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- END USER DATA-->
+                            </div>
+                            <div class="col-lg-8">
+                                <!-- TOP CAMPAIGN-->
+                                <div class="top-campaign">
+                                    <h3 class="title-3 m-b-30">Các danh mục</h3>
+                                    <div class="table-responsive">
+                                        <table class="table table-top-campaign">
+                                            <tbody>
+                                            {% for category in categorys %}
+                                                <tr>
+                                                    <td>{{category.getName()}}</td>
+                                                    <td class="{% if category.status === 1 %} btn btn-info {% else %} btn btn-secondary {% endif %}">
+                                                        {% if category.status === 1 %} Bật {% else %} Tắt {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="categories/{{category.getId()}}"><button class="btn btn-danger">Cật nhật</button></a>
+                                                        <a href="/delete/{{category.getId()}}" onclick="return confirm ('Bạn có chắc là muốn xóa nó không')"><button class="btn btn-dark">Xóa</button></a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--  END TOP CAMPAIGN-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+{% endblock %}
