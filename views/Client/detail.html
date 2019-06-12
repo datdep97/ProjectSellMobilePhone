@@ -1,0 +1,89 @@
+{% extends "master_page.html" %}
+{% block title %} 
+{% endblock %}
+{% block main %}
+
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-9 padding-right">
+					<div class="product-details"><!--product-details-->
+						<div class="col-sm-5">
+							<div class="view-product">
+								<img src="images/products/{{product.image}}" alt="" />
+							</div>
+							<div id="similar-product" class="carousel slide" data-ride="carousel">
+							</div>
+
+						</div>
+						<div class="col-sm-7">
+							<div class="product-information"><!--/product-information-->
+								<img src="images/product-details/new.jpg" class="newarrival" alt="" />
+								<h2>{{product.name}}</h2>
+								<span>
+									<span>{{product.price}} VND</span>
+									<a href="addcart?id={{product.id}}"><button type="button" class="btn btn-fefault cart">
+										<i class="fa fa-shopping-cart"></i>
+										Add to cart
+									</button></a>
+								</span>
+								<p><b>Warranty:</b> {{product.warranty}} Tháng</p>
+								<p><b>Description:</b>{{product.description}}</p>
+								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+							</div><!--/product-information-->
+						</div>
+					</div><!--/product-details-->
+					
+					<div class="recommended_items"><!--recommended_items-->
+						<h2 class="title text-center">recommended items</h2>
+						
+						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+							<div class="carousel-inner">
+								<div class="item active">
+								{% for item in products %}
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="images/products/{{item.image}}" alt="" />
+													<h2>{{item.price}} VND</h2>
+													<p>{{item.name}}</p>
+													<a href="detail?id={{item.id}}"><button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Product Detail</button></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+								</div>
+								<div class="item">
+								{% for item in products %}
+									<div class="col-sm-4">
+										<div class="product-image-wrapper">
+											<div class="single-products">
+												<div class="productinfo text-center">
+													<img src="images/products/{{item.image}}" alt="" />
+													<h2>{{item.price}} VND</h2>
+													<p>{{item.name}}</p>
+													<a href="detail?id={{item.id}}"><button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Product Detail</button></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% endfor %}
+								</div>
+							</div>
+							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+								<i class="fa fa-angle-left"></i>
+							  </a>
+							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+								<i class="fa fa-angle-right"></i>
+							  </a>			
+						</div>
+					</div><!--/recommended_items-->
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	
+{% endblock %}

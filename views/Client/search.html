@@ -1,0 +1,72 @@
+{% extends "master_page.html" %}
+{% block title %} 
+	Search Page
+{% endblock %}
+{% block main %}
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Category</h2>
+						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							<div class="panel panel-default">
+								<div class="panel-heading">
+								{% for category in categories %}
+									<h4 style="line-height: 36px" class="panel-title"><a href="category?id={{ category.id }}">{{ category.name }}</a></h4>
+								{% endfor %}
+								</div>
+							</div>
+						</div><!--/category-products-->
+					
+						<div class="brands_products"><!--brands_products-->
+							
+						</div><!--/brands_products-->
+						
+						<div class="price-range"><!--price-range-->
+							
+						</div><!--/price-range-->
+						
+						<div style="padding-top: 0;" class="shipping text-center"><!--shipping-->
+							<img style="width: 260px; height: 600px;" src="images/home/shipping.gif" alt="" />
+						</div><!--/shipping-->
+
+						<div style="padding-top: 0; margin-bottom: 20px" class="shipping text-center"><!--shipping-->
+							<img src="images/home/shipping2.jpg" alt="" />
+						</div><!--/shipping-->
+					
+					</div>
+				</div>
+				
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						<h2 class="title text-center">Search by name: <font color="red">{{name}}</font></h2>
+						{% for product in products %}
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+										<div class="productinfo text-center">
+											<img style="width: 200px" src="images/products/{{product.image}}" alt="" />
+											<h2>{{product.price}} VND</h2>
+											<p>{{product.name}}</p>
+											<a href="#" class="btn btn-default add-to-cart"></i>Product Detail</a>
+										</div>
+										<div class="product-overlay">
+											<div class="overlay-content">
+												<h2>{{product.price}} VND</h2>
+												<p>{{product.description}}</p>
+												<a href="detail?id={{product.id}}" class="btn btn-default add-to-cart"></i>Product Detail</a>
+											</div>
+										</div>
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div><!--features_items-->
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
