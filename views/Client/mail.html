@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h1>Cảm ơn {{customer.getName()}} đã đặt hàng thành công.</h1>
+
+        <p>
+            Danh sách sản phẩm trong đơn hàng của bạn:
+        </p>
+
+        <ul>
+            {% for item in items.toArray() %}
+                <li>
+                    <h3>
+                        {{item.getName()}} - {{item.getPrice()}}
+                    </h3>
+
+                    <p>
+                        {{item.getDescription()}}
+                    </p>
+                </li>
+            {% endfor %}
+        </ul>
+
+        Tổng giá trị đơn hàng: {{items.totalPrice()}}
+    </body>
+</html>

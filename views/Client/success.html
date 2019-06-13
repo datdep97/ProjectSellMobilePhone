@@ -1,0 +1,33 @@
+{% extends "master_page.html" %}
+{% block title %}
+Success
+{% endblock %}
+{% block main %}
+<style>
+    .table-total {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .div_success{
+        border: solid green;
+        width: 100%;
+        height: 150px;
+        margin: 10px 10px 36px 10px;
+    }
+    .div_success p {
+        color: green;
+        margin: 42px;
+        font-size: 20px;
+    }
+</style>
+
+<section id="cart_items">
+    <div class="container" >
+        <div class="div_success">
+            <p>Quý khách đã đặt hàng thành công, Hóa đơn đã được gửi về Email của bạn, Vui lòng kiểm tra Email.<br>
+                Mặt hàng của bạn sẽ được chuyển trong vòng 24 giờ kể từ khi quý khách đặt hàng thành công.
+            </p>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+{% endblock %}

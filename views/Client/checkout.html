@@ -1,0 +1,89 @@
+{% extends "master_page.html" %}
+{% block title %}
+Cart
+{% endblock %}
+{% block main %}
+<style>
+    .table-total {
+        display: flex;
+        justify-content: flex-start;
+    }
+</style>
+
+<section id="cart_items">
+    <div class="container">
+        <div class="review-payment">
+            <h2>Review & Payment</h2>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td class="image">Item</td>
+                    <td class="description"></td>
+                    <td class="price">Price</td>
+                    <td class="quantity">Quantity</td>
+                    <td class="total">Total</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in bill %}
+                <tr>
+                    <td class="cart_product">
+                        <a href=""><img width="80px" src="images/products/{{product.image}}" alt=""></a>
+                    </td>
+                    <td class="cart_description">
+                        <h4><a href="">{{product.name}}</a></h4>
+                    </td>
+                    <td class="cart_price">
+                        <p>{{product.price}}</p>
+                    </td>
+                    <td class="cart_quantity">
+                        <div class="cart_quantity_button">
+                            <input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+                        </div>
+                    </td>
+                    <td class="cart_total">
+                        <p class="cart_total_price">{{product.price}}</p>
+                    </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3"></td>
+                    <td colspan="2">
+                        <table class="table table-condensed total-result">
+                            <tr class="table-total">
+                                <td><h3>Total Price: </h3></td>
+                                <td><span><h3>{{totalPrice}} <font color="red">VND</font></h3></span></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="shopper-informations">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="shopper-info">
+                        <p>Information Customer</p>
+                        <form method="post">
+                            <input class="form-control" type="text" name="fullname" placeholder="FullName" required>
+                            <input class="form-control" type="email" name="email" placeholder="Email" required>
+                            <select class="form-control" name="gender" required>
+                                <option></option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select><br>
+                            <input class="form-control" type="number" name="phone" placeholder="Phone" required>
+                            <input class="form-control" type="text" name="address" placeholder="Address" required>
+                            <button class="btn btn-primary" href="">Xác nhận mua hàng</button>
+                        </form><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+{% endblock %}
