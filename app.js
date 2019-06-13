@@ -69,6 +69,6 @@ app.use(routerRemoveCart.routes());
 app.use(routerCheckout.routes());
 app.use(routerSuccess.routes());
 
-app.listen(process.env.POST, () => {
+app.listen(process.env.PORT, () => {
     console.log('Server listen port 6060')
 });
